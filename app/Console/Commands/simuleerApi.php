@@ -4,22 +4,23 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Log;
+use App\OntvangenSignaal;
 
-class getLoraApi extends Command
+class simuleerApi extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'getLoraApi:all';
+    protected $signature = 'simuleerApi:zonnen';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'get the api values from the lora network';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -39,7 +40,9 @@ class getLoraApi extends Command
     public function handle()
     {
         //
-        Log::info('a cronjob has been exec.');
-        //$request = \Illuminate\Http\Request::create('http://your-api.com', 'POST', ['param1' => 'value1', 'param2' => 'value2']);
+        $nieuwSignaal = new OntvangenSignaal;
+        $nieuwSignaal->uv =  rand (  280 ,  420 );
+        $nieuwSignaal->save();
+        Log::info('a OntvangenSignaal has been created...');
     }
 }

@@ -16,7 +16,7 @@ class ZonnenbrandAdvies extends Migration
         //
         Schema::create('zonnenbrandadviezen',function(Blueprint $table){
             $table->increments('id');
-            $table->integer('advies_id');
+            $table->integer('advies_id')->unsigned();
             $table->integer('factor');
             $table->string('tekst');
         });
@@ -30,5 +30,6 @@ class ZonnenbrandAdvies extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('zonnenbrandadviezen');
     }
 }

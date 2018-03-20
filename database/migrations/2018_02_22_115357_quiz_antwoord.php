@@ -15,7 +15,7 @@ class QuizAntwoord extends Migration
     {
         Schema::create('quizantwoorden',function(Blueprint $table){
             $table->increments('id');
-            $table->integer('vraag_id')->unsigned();
+            $table->integer('quiz_vraag_id')->unsigned();
             $table->string('tekst');
             $table->enum('letter',["a","b","c","d"]);
         });
@@ -29,5 +29,6 @@ class QuizAntwoord extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('quizantwoorden');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\SignaalEvent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/vragenlijst', 'vragenlijstController@index')->name('vragenlijst');
+Route::post('/voerVragenlijstIn', 'vragenlijstController@voerVragenlijstIn')->name('voerVragenlijstIn');
+
+Route::get('/addSignaaltoDbEvent/{apivalue}',function($apivalue){
+    event(new SignaalEvent($apivalue));
+})->name('addSignaaltoDbEvent');
+

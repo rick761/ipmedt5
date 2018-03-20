@@ -30,5 +30,6 @@ class Advies extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('adviezen');
     }
 }

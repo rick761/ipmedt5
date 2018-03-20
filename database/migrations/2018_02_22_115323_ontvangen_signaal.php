@@ -28,5 +28,6 @@ class OntvangenSignaal extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('ontvangensignalen');
     }
 }

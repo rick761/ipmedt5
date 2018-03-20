@@ -15,7 +15,7 @@ class UserHistory extends Model
     }
 
     public function OntvangenSignaal(){
-
         return $this->belongsTo('App\OntvangenSignaal');
     }
+
 }

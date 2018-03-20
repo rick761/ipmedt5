@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
+
 
 class OntvangenSignaal extends Seeder
 {
@@ -13,11 +15,14 @@ class OntvangenSignaal extends Seeder
     {
         //
         $signal = [[
-                'uv' => 10
+                'uv' => 4,
+                'created_at' => Carbon::now()->subWeek()
             ],[
-                'uv' => 20
+                'uv' => 5,
+                'created_at' => Carbon::yesterday()
             ],[
-                'uv' => 30
+                'uv' => 6,
+                'created_at' => Carbon::now()
             ]];
         DB::table('ontvangensignalen')->insert($signal);
     }

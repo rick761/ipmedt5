@@ -20,25 +20,24 @@
                         </div>
                     @endif
 
+                        <ul>
+                            <li>
+                                <a href="{{ route('vragenlijst') }}">Stel je huidtype in</a>
+                            </li>
+                            <li>
+                                Uw huidtype is: {{$user->huidtype}}
+                            </li>
+                            <li>
+                                <h3>Laatste signaal: </h3>
+                                sterkte:
+                                <h1>{{ $laatsteSignaal->uv }} /11</h1>
+                                tijd:
+                                <h2> {{ $laatsteSignaal->created_at }} </h2>
+                            </li>
+                        </ul>
 
 
-                        @foreach($UserHistory as $UserHistoryItem)
-                                <p> UserHistoryItem: </p>
-                                <p> {{ $UserHistoryItem }}</p>
-                                <p> <?php var_dump($UserHistoryItem->OntvangenSignaal ); ?> </p>
-                                <p></p>
-                            <br><br>
-                        @endforeach
-                        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                        <br>
 
-                        @foreach($OntvangenSignalen as $Signaal)
-
-                            <p> ontvangensignaal: </p>
-                            <p> {{$Signaal}}</p>
-                            <p> <?php var_dump($Signaal->UserHistorys); ?> </p>
-                            <br><br>
-                        @endforeach
 
 
 
@@ -48,4 +47,5 @@
         </div>
     </div>
 </div>
+
 @endsection

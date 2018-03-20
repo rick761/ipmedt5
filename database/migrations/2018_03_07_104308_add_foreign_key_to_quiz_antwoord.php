@@ -14,7 +14,7 @@ class AddForeignKeyToQuizAntwoord extends Migration
     public function up()
     {
         Schema::table('quizantwoorden',function( $table){
-            $table->foreign('vraag_id')->references('id')->on('quizvragen');
+            $table->foreign('quiz_vraag_id')->references('id')->on('quizvragen');
         });
     }
 

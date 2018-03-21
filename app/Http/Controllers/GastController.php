@@ -11,9 +11,9 @@ class GastController extends Controller
     //
     public function index(){
         if(Auth::guest()){
-            echo 'gast';
+           // echo 'gast';
         } else {
-            echo 'geen gast';
+            //echo 'geen gast';
         }
 
         $laatsteSignaal = OntvangenSignaal::orderBy('created_at', 'desc')

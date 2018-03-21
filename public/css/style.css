@@ -5,6 +5,10 @@
     -webkit-font-smoothing: antialiased;
 }
 
+div.content{
+    margin-top:45px;
+}
+
 .timestamp_info{
     margin:10px;
     text-align: left;
@@ -15,6 +19,9 @@
 
 p {
     color: #b3b3b3;
+    margin:0 !important;
+    padding-bottom: 45px;
+
 }
 
 a {
@@ -32,7 +39,7 @@ a:hover{
     padding:0;
     -webkit-padding-start: 0;
     font-size:0;
-    text-align:center;
+    text-align:left;
     background-color:rgb(242, 242, 242);;
     margin-bottom:45px;
 }
@@ -128,7 +135,7 @@ body{
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .inner_content{
-    padding:45px;
+    padding: 45px 45px 0px 45px;
 }
 
 .text{

@@ -22,7 +22,20 @@ const app = new Vue({
     created(){
         Echo.channel('channelSignaalEvent')
             .listen('SignaalEvent', (e) => {
-            alert(e.message);
+
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    type: "POST",
+                    url: '/addUserHistory',
+                    data: {
+                        _token: CSRF_TOKEN,
+                        signaal:e.message
+                    },
+                    success: function(e) {
+                        console.log(e);
+                    }
+                })
+
     });
     }
 });

@@ -19,6 +19,14 @@ class vragenlijstController extends Controller
     }
     public function index()
     {
+        /*
+         * $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', route('addSignaaltoDbEvent',['testmessage']), [
+            'verify' => false,
+        ]);
+        echo $res->getBody();
+        */
+
 
         return view('vragenlijst',[
             'quizvragen' => QuizVraag::All()

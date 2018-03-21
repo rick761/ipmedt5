@@ -9,9 +9,11 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="<?php echo asset('css/font-awesome-4.7.0/css/font-awesome.min.css')?> ">
         <link rel="stylesheet" href="<?php echo asset('css/app.css')?>" type="text/css">
+        <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
         <!-- Styles -->
-        <style>
+        <style> /*
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -61,10 +63,58 @@
 
             .m-b-md {
                 margin-bottom: 30px;
-            }
+            } */
         </style>
     </head>
     <body>
+
+
+    <div class="main">
+        <div class="content">
+            <span class="timestamp_info">
+                Meting:
+                {{$laatsteSignaal->created_at}}
+
+            </span>
+
+            <div class="inner_content">
+                <i class="fa fa-sun-o fa-6" id="sun_logo" aria-hidden="true"></i>
+
+
+                <ul id="temp_bar">
+                    <li class="blue"></li>
+                    <li class="green"></li>
+                    <li class="yellow"></li>
+                    <li class="orange"></li>
+                    <li class="red"></li>
+                </ul>
+                <p>Zonnensterkte: <span class="highlight">{{$laatsteSignaal->uv}}</span> / 11</p>
+
+
+                <p>Beter zonadvies? <a href="login.html">log hier in. </a></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- OLD
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -102,8 +152,8 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
-                -->
+
             </div>
-        </div>
+        </div> END OLD -->
     </body>
 </html>

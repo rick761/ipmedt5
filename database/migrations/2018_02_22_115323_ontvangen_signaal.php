@@ -15,7 +15,7 @@ class OntvangenSignaal extends Migration
     {
         Schema::create('ontvangensignalen',function(Blueprint $table){
             $table->increments('id');
-            $table->integer('uv');
+            $table->double('uv');
             $table->timestamps();
         });
     }

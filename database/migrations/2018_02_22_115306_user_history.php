@@ -17,6 +17,7 @@ class UserHistory extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('ontvangen_signaal_id')->unsigned();
+            //$table->timestamps();
 
         });
     }

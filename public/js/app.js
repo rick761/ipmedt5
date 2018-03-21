@@ -13881,12 +13881,24 @@ window.Vue = __webpack_require__(38);
 Vue.component('example-component', __webpack_require__(41));
 
 var app = new Vue({
-  el: '#app',
-  created: function created() {
-    Echo.channel('channelSignaalEvent').listen('SignaalEvent', function (e) {
-      alert(e.message);
-    });
-  }
+    el: '#app',
+    created: function created() {
+        Echo.channel('channelSignaalEvent').listen('SignaalEvent', function (e) {
+
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                type: "POST",
+                url: '/addUserHistory',
+                data: {
+                    _token: CSRF_TOKEN,
+                    signaal: e.message
+                },
+                success: function success(e) {
+                    console.log(e);
+                }
+            });
+        });
+    }
 });
 
 /***/ }),

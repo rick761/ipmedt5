@@ -15,13 +15,13 @@ class OntvangenSignaal extends Seeder
     {
         //
         $signal = [[
-                'uv' => 4,
+                'uv' => 0.01,
                 'created_at' => Carbon::now()->subWeek()
             ],[
-                'uv' => 5,
+                'uv' => 0.1,
                 'created_at' => Carbon::yesterday()
             ],[
-                'uv' => 6,
+                'uv' => 3.1,
                 'created_at' => Carbon::now()
             ]];
         DB::table('ontvangensignalen')->insert($signal);

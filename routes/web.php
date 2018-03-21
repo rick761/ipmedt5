@@ -13,9 +13,10 @@ use App\Events\SignaalEvent;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/','GastController@index');
 
 Auth::routes();
 
@@ -26,5 +27,7 @@ Route::post('/voerVragenlijstIn', 'vragenlijstController@voerVragenlijstIn')->na
 
 Route::get('/addSignaaltoDbEvent/{apivalue}',function($apivalue){
     event(new SignaalEvent($apivalue));
+    return 'OK:noerror';
 })->name('addSignaaltoDbEvent');
+Route::post('/addUserHistory', 'UserHistoryController@add')->name('addUserHistory');
 

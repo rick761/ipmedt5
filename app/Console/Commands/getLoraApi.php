@@ -78,11 +78,17 @@ class getLoraApi extends Command
                 $signaal->save();
                 //pingping to HTML
                 $client = new \GuzzleHttp\Client();
-                $request = new \GuzzleHttp\Psr7\Request('GET', 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at);
-                $promise = $client->sendAsync($request)->then(function ($response) {
-                    echo 'I completed! ' . $response->getBody();
-                });
-                $promise->wait();
+               $res = $client->request('GET', 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
+                $res->getBody();
+                echo 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling;
+
+
+                //$request = new \GuzzleHttp\Psr7\Request('GET', 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
+                //$promise = $client->sendAsync($request)->then(function ($response) {
+                 //   echo 'I completed! ' . $response->getBody();
+                //});
+                //$promise->wait();
+
             } else {
                 //bestaat
                 echo 'laatste entry staat al in de db.';

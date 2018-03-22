@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 class SignaalEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $message;
+    public $timestamp;
+    public $uv;
 
 
 
@@ -24,12 +25,11 @@ class SignaalEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($timestamp,$uv)
     {
         //
-
-        $this->message = $message;
-
+        $this->timestamp = $timestamp;
+        $this->uv = $uv;
     }
 
     /**

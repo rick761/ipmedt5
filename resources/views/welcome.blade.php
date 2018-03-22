@@ -3,78 +3,96 @@
 <div class="content">
     <span class="timestamp_info">
         Meting:
-        {{$laatsteSignaal->created_at}}
+        <span class="signaal_created_at">{{$laatsteSignaal->created_at}}</span>
     </span>
 
     <!--diplaySun-->
     <div class="inner_content">
+        <?php $suncolor = ''; ?>
         @switch(intval($laatsteSignaal->uv))
+            @case(0)
             @case(1)
             @case(2)
-            <i class="fa fa-sun-o fa-6" id="sun_logo" style="color:blue;" aria-hidden="true"></i>
+                <?php $suncolor = 'blue'; ?>
             @break
             @case(3)
             @case(4)
-            <i class="fa fa-sun-o fa-6" id="sun_logo" style="color:green;" aria-hidden="true"></i>
+                <?php $suncolor = 'green'; ?>
             @break
             @case(5)
             @case(6)
-            <i class="fa fa-sun-o fa-6" id="sun_logo" style="color:yellow;" aria-hidden="true"></i>
+                <?php $suncolor = 'yellow'; ?>
             @break
             @case(7)
             @case(8)
-            <i class="fa fa-sun-o fa-6" id="sun_logo" style="color:orange;" aria-hidden="true"></i>
+                <?php $suncolor = 'orange'; ?>
             @break
             @case(9)
             @case(10)
             @case(11)
-            <i class="fa fa-sun-o fa-6" id="sun_logo" style="color:red;" aria-hidden="true"></i>
+                <?php $suncolor = 'red'; ?>
             @break
+            @default
 
-                @default
-                <i class="fa fa-sun-o fa-6" id="sun_logo" style="color:black;" aria-hidden="true"></i>
         @endswitch
-
+        <i class="fa fa-sun-o fa-6" id="sun_logo" style="color:{{$suncolor}};" aria-hidden="true"></i>
 
         <!--diplayBAR-->
-            <ul id="temp_bar">
+
+                <?php
+                $blue='none' ;
+                $green= 'none' ;
+                $orange= 'none' ;
+                $yellow= 'none' ;
+                $red= 'none' ;
+                ?>
+
+
                 @switch(intval($laatsteSignaal->uv))
+                    @case(0)
                     @case(1)
                     @case(2)
-                    <li class="blue"></li>
+                        <?php $blue = 'inline-block;' ?>
                     @break
                     @case(3)
                     @case(4)
-                    <li class="blue"></li>
-                    <li class="green"></li>
+                        <?php $blue = 'inline-block;' ?>
+                        <?php $green = 'inline-block;' ?>
                     @break
                     @case(5)
                     @case(6)
-                    <li class="blue"></li>
-                    <li class="green"></li>
-                    <li class="yellow"></li>
+                        <?php $blue = 'inline-block;' ?>
+                        <?php $green = 'inline-block;' ?>
+                        <?php $yellow = 'inline-block;' ?>
                     @break
                     @case(7)
                     @case(8)
-                    <li class="blue"></li>
-                    <li class="green"></li>
-                    <li class="yellow"></li>
-                    <li class="orange"></li>
+                        <?php $blue = 'inline-block;' ?>
+                        <?php $green = 'inline-block;' ?>
+                        <?php $orange = 'inline-block;' ?>
+                        <?php $yellow = 'inline-block;' ?>
                     @break
                     @case(9)
                     @case(10)
                     @case(11)
-                    <li class="blue"></li>
-                    <li class="green"></li>
-                    <li class="orange"></li>
-                    <li class="red"></li>
-            @break
+                        <?php $blue = 'inline-block;' ?>
+                        <?php $green = 'inline-block;' ?>
+                        <?php $orange = 'inline-block;' ?>
+                        <?php $yellow = 'inline-block;' ?>
+                        <?php $red = 'inline-block;' ?>
+                    @break
             @default
-                <li style="width:100% !important;">ERROR</li>
+                    Error
         @endswitch
+        <ul id="temp_bar">
+            <li class="blue" style="display:{{$blue}}"></li>
+            <li class="green" style="display:{{$green}}"></li>
+            <li class="yellow" style="display:{{$yellow}}"></li>
+            <li class="orange" style="display:{{$orange}}"></li>
+            <li class="red" style="display:{{$red}}"></li>
         </ul>
 
-        <p>Zonnensterkte: <span class="highlight">{{$laatsteSignaal->uv}}</span> / 11</p>
+        <p>Zonnensterkte: <span class="signaal_uv" class="highlight">{{$laatsteSignaal->uv}}</span> / 11</p>
 
 
         <p>Beter zonadvies? <a href="{{ route('login') }}">log hier in. </a></p>

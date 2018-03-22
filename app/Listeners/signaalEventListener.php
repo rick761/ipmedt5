@@ -27,6 +27,6 @@ class signaalEventListener
     public function handle(SignaalEvent $event)
     {
         //
-        echo 'wololo';
+
     }
 }

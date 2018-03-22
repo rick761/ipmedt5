@@ -1,6 +1,50 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
 @section('content')
+
+
+    <div class="content">
+        <div class="inner_content">
+
+            <form method="POST" action="{{ route('register') }}" class=" login-form ">
+                @csrf
+
+
+                <input type="text" type="text" class="{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus placeholder="name"/>
+                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="email" />
+                <input type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="wachtwoord"/>
+                <input type="password" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="password_confirmation" value="{{ old('email') }}" required placeholder="verifireer wachtwoord"/>
+                <button type="submit">Registreer</button>
+                <p class="message">Al geregistreerd? <a href="{{route('login')}})" >login</a></p>
+                <p class="message">Wil je niet registreren? <a href="{{route('visitor')}}" >Ga terug.</a></p>
+                @if ($errors->has('name'))
+
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
+                @if ($errors->has('email'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                @endif
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+    <!--
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -73,5 +117,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 @endsection

@@ -1,8 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
 @section('content')
 
-<div class="container">
+    <div class="content">
+        <div class="inner_content">
+
+            <form method="POST" action="{{ route('login') }}" class=" login-form ">
+                @csrf
+                <input type="text" placeholder="email"  type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus />
+                <input type="password" placeholder="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required/>
+                <button type="submit">login</button>
+                <p class="message">Niet geregistreerd? <a href="{{route('register')}}" onclick="myFunction()">Maak een account.</a></p>
+                <p class="message">Wil je niet inloggen? <a href="{{route('visitor')}}" onclick="myFunction()">Ga terug.</a></p>
+            </form>
+            @if ($errors->has('email'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+            @if ($errors->has('password'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
+        </div>
+    </div>
+
+<!--<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -66,5 +90,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 @endsection

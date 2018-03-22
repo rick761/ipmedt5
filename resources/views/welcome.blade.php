@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 <div class="content">
-    <span class="timestamp_info">
+    <span class="right_corner_info message">
         Meting:
         <span class="signaal_created_at">{{$laatsteSignaal->created_at}}</span>
     </span>
@@ -92,10 +92,10 @@
             <li class="red" style="display:{{$red}}"></li>
         </ul>
 
-        <p>Zonnensterkte: <span class="signaal_uv" class="highlight">{{$laatsteSignaal->uv}}</span> / 11</p>
+        <p class="message">Zonnensterkte: <span class="signaal_uv" class="highlight">{{$laatsteSignaal->uv}}</span> / 11</p>
 
 
-        <p>Beter zonadvies? <a href="{{ route('login') }}">log hier in. </a></p>
+        <p class="message">Beter zonadvies? <a href="{{ route('login') }}">log hier in. </a></p>
     </div>
 </div>
 @endsection

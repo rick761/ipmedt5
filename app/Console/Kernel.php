@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         $schedule->command('getLoraApi:all ')->everyMinute();
-        $schedule->command('simuleerApi:zonnen')->everyFifteenMinutes();
+    //    $schedule->command('simuleerApi:zonnen')->everyFifteenMinutes();
 
     }
 

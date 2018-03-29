@@ -9,15 +9,21 @@ use App\OntvangenSignaal;
 class GastController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('loggedinredirect');
+    }
+
+
     public function index(){
-        if(Auth::guest()){
-           // echo 'gast';
-        } else {
-            //echo 'geen gast';
-        }
+
 
         $laatsteSignaal = OntvangenSignaal::orderBy('created_at', 'desc')
             ->first();
+
+
+
+
 
         return view('welcome', [
             'laatsteSignaal'=>$laatsteSignaal

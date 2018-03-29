@@ -15,7 +15,7 @@ class UserHistoryController extends Controller
     public function add(Request $request){
         $logged_user_id = Auth::id();
         $zoekSignaal = OntvangenSignaal::where('created_at', '=', $request->signaal)->get();
-
+        
         if($zoekSignaal->count()>0) { // als er een signaal gevonden is
 
             //check for bestaande userHistorty

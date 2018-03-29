@@ -45,11 +45,13 @@ class UserHistoryController extends Controller
         return view('userHistoryGraph',
             [
                 'Votes' => $data,
-//                'waardesBijDatumsDatabase' => $waardesBijDatumsDatabase,
                 'datumsInDatabase' => $datumsInDatabase
             ]);
     }
 
+    public function veranderGrafiek(Request $request){
+        dd($request->datum);
+    }
 
 
     public function add(Request $request){

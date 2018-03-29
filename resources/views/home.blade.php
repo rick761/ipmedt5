@@ -175,7 +175,7 @@
 
             <p class="message">Zonnensterkte: <span class="signaal_uv" class="highlight">{{$laatsteSignaal->uv}}</span> / 8</p>
 
-
+            <p class="message">Uw geschiedenis?<a href="{{ route('userHistory') }}"> bekijk. </a> </p>
             <p class="message">Ander huidtype?<a href="{{ route('vragenlijst') }}"> Vul vragenlijst in. </a> </p>
             <p class="message">Uitloggen? <a href="{{ url('/logout') }}"> logout </a> </p>
 

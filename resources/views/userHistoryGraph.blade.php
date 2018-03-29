@@ -6,7 +6,10 @@
 
     <h1> Zie hieronder voor mooie grafiekjes 🌚 </h1>
 
-<!--        --><?php
+<?php
+
+
+
 //
 //        dd($datumsInDatabase)
 //

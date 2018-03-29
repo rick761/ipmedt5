@@ -51,74 +51,107 @@ function changeStamp(timestamp){
 }
 function changeUv(uv){
     $('.signaal_uv').text(uv);
+    $('.signaal_uv_groot').text(Math.round(uv));
 
     var logo = $('#sun_logo');
-    var blue = $('#temp_bar .blue');
+    var white = $('#temp_bar .white');
+    var blue = $('#temp_bar .blue')
+    var lightblue = $('#temp_bar .lightblue')
     var green = $('#temp_bar .green');
     var yellow = $('#temp_bar .yellow');
     var orange = $('#temp_bar .orange');
     var red = $('#temp_bar .red');
+    var black = $('#temp_bar .black');
     switch( true ){
-
-        case ( uv < 3 ):
-        //case 1:
-        //case 2:
-            console.log('blue');
-            logo.css('color', 'blue');
-            blue.css('display', 'inline-block');
-            red.css('display', 'none');
+        case ( Math.round(uv) < 2 ):
+            logo.css('color', 'gray');
+            white.css('display', 'inline-block');
+            blue.css('display', 'none');
+            lightblue.css('display', 'none');
             green.css('display', 'none');
             yellow.css('display', 'none');
+            orange.css('display', 'none');
             red.css('display', 'none');
+            black.css('display', 'none');
             break;
-        case ( uv < 5 ):
-        //case 3:
-        //case 4:
-            console.log('green');
-            logo.css('color', 'green');
+        case ( Math.round(uv) < 3 ):
+            logo.css('color', 'blue');
+            white.css('display', 'inline-block');
             blue.css('display', 'inline-block');
+            lightblue.css('display', 'none');
+            green.css('display', 'none');
+            yellow.css('display', 'none');
+            orange.css('display', 'none');
+            red.css('display', 'none');
+            black.css('display', 'none');
+            break;
+        case ( Math.round(uv) < 4 ):
+            logo.css('color', 'lightblue');
+            white.css('display', 'inline-block');
+            blue.css('display', 'inline-block');
+            lightblue.css('display', 'inline-block');
+            green.css('display', 'none');
+            yellow.css('display', 'none');
+            orange.css('display', 'none');
+            red.css('display', 'none');
+            black.css('display', 'none');
+            break;
+        case ( Math.round(uv) < 5 ):
+            logo.css('color', 'green');
+            white.css('display', 'inline-block');
+            blue.css('display', 'inline-block');
+            lightblue.css('display', 'inline-block');
             green.css('display', 'inline-block');
             yellow.css('display', 'none');
             orange.css('display', 'none');
             red.css('display', 'none');
-
+            black.css('display', 'none');
             break;
-        case ( uv < 7 ):
-        //case 5:
-        //case 6:
-            console.log('yellow');
+        case ( Math.round(uv) < 6 ):
             logo.css('color', 'yellow');
+            white.css('display', 'inline-block');
             blue.css('display', 'inline-block');
+            lightblue.css('display', 'inline-block');
             green.css('display', 'inline-block');
             yellow.css('display', 'inline-block');
             orange.css('display', 'none');
             red.css('display', 'none');
-
+            black.css('display', 'none');
             break;
-        case ( uv < 9 ):
-            console.log('orange');
-        //case 7:
-        //case 8:
+        case ( Math.round(uv) < 7 ):
             logo.css('color', 'orange');
+            white.css('display', 'inline-block');
             blue.css('display', 'inline-block');
+            lightblue.css('display', 'inline-block');
             green.css('display', 'inline-block');
             yellow.css('display', 'inline-block');
             orange.css('display', 'inline-block');
             red.css('display', 'none');
-
+            black.css('display', 'none');
             break;
-        case ( uv < 12 ):
-        //case 9:
-        //case 10:
-        //case 11:
+        case ( Math.round(uv) < 8 ):
             console.log('red');
             logo.css('color', 'red');
+            white.css('display', 'inline-block');
             blue.css('display', 'inline-block');
+            lightblue.css('display', 'inline-block');
             green.css('display', 'inline-block');
             yellow.css('display', 'inline-block');
             orange.css('display', 'inline-block');
             red.css('display', 'inline-block');
-
+            black.css('display', 'none');
+        break;
+        case ( Math.round(uv) < 12 ):
+            console.log('black');
+            logo.css('color', 'black');
+            white.css('display', 'inline-block');
+            blue.css('display', 'inline-block');
+            lightblue.css('display', 'inline-block');
+            green.css('display', 'inline-block');
+            yellow.css('display', 'inline-block');
+            orange.css('display', 'inline-block');
+            red.css('display', 'inline-block');
+            black.css('display', 'inline-block');
             break;
         default:
             console.log('error');

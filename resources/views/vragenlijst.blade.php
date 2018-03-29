@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
 @section('content')
-<div class="container">
+
+<!--<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -41,5 +42,26 @@
             </div>
         </div>
     </div>
+</div>-->
+<div class="containervragen">
+    <form method='post' action="{{ route('voerVragenlijstIn') }}">
+        @csrf
+        @foreach ($quizvragen as $quizvraag)
+            <div class="tekstvragen">
+                <p class="message">{{$quizvraag->vraag}}</p>
+            </div>
+            <ul style="list-style-type: none;">
+                @foreach($quizvraag->quizAntwoord as $antwoorden)
+                    <li>
+                        <input type="radio" name="vraag{{$antwoorden->quiz_vraag_id}}" id="test{{$antwoorden->id}}" name="{{$antwoorden->id}}" value="{{$antwoorden->quiz_vraag_id}}">
+                        <label for="test{{$antwoorden->id}}"> {{$antwoorden->letter}}, {{$antwoorden->tekst}}</label>
+                    </li>
+                @endforeach
+            </ul>
+        @endforeach
+        <button type="submit">Voer in</button>
+    </form>
 </div>
+
+
 @endsection

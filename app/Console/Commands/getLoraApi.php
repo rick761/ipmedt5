@@ -42,13 +42,14 @@ class getLoraApi extends Command
     public function handle()
     {
 
-
+		
         $client = new GuzzleHttp\Client();
         $res = $client->request('GET', 'https://athos_lora.data.thethingsnetwork.org/api/v2/query/athos_ttn_uno?last=1w', [
             'headers' => [
                 'Authorization' => 'key ttn-account-v2.-001CbYaSyAUbTOaw2DmN47esqkdbQhDmPM3sAnw2aQ',
             ],
             'verify' => false,
+//	echo 'komt in de guzzlehttp/client'; 
         ]);
         $json_list = json_decode($res->getBody());
         $laatste_call = $json_list[count($json_list)-1];
@@ -78,9 +79,9 @@ class getLoraApi extends Command
                 $signaal->save();
                 //pingping to HTML
                 $client = new \GuzzleHttp\Client();
-               $res = $client->request('GET', 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
+               $res = $client->request('GET', 'http://localhost/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
                 $res->getBody();
-                echo 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling;
+                echo 'http://localhost/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling;
 
 
                 //$request = new \GuzzleHttp\Psr7\Request('GET', 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
@@ -95,7 +96,7 @@ class getLoraApi extends Command
             }
 
         }
-
+//	Log::debug('crontask exec.');
         //check of bestaat
 
 

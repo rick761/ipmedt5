@@ -6,25 +6,26 @@
 
     <h1> Zie hieronder voor mooie grafiekjes 🌚 </h1>
 
-<?php
 
+        <div class="dropdown">
+            <button class="btn btn-warning dropdown-toggle" type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Selecteer datum
+            </button>
 
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @for ($i = 0; $i < count($datumsInDatabase); $i++)
+                    @foreach($datumsInDatabase[$i] as $datum)
+                        <form method="post" action="{{route('veranderGrafiek')}}">
+                            @csrf
+                            <input class="dropdown-item" type="submit" value={{$datum}}>
+                            <input type="hidden" name="datum" value={{$datum}}>
+                        </form>
+                    @endForeach
+                @endfor
+            </div>
 
-//
-//        dd($datumsInDatabase)
-//
-//        ?>
-        @for ($i = 0; $i < count($datumsInDatabase); $i++)
-            @foreach($datumsInDatabase[$i] as $datum)
-                {{$datum}}
-                <br />
-            @endForeach
-
-                {{--@foreach($waardesBijDatumsDatabase[$i] as $waarde)--}}
-                    {{--<p>{{$waarde}}</p>--}}
-                {{--@endForeach--}}
-        @endfor
-
+        </div>
+        <hr>
 
 
     <div id="poll_div"></div>

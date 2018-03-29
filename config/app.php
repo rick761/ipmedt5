@@ -147,9 +147,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers...
-         */
+
+        /* grafiekjes enzo */
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        /* einde grafiekjes */
+
 
         /*
          * Application Service Providers...
@@ -175,6 +177,9 @@ return [
 
     'aliases' => [
 
+        /* grafieken */
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
+        /* einde grafieken */
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

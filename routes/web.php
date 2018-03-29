@@ -18,6 +18,8 @@ use App\Events\SignaalEvent;
 });*/
 Route::get('/','GastController@index')->name('visitor');
 
+Route::get('/userhistory', 'UserHistoryController@index');
+
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

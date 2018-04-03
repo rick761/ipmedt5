@@ -13884,7 +13884,7 @@ var app = new Vue({
     el: '#app',
     created: function created() {
         Echo.channel('channelSignaalEvent').listen('SignaalEvent', function (e) {
-            //console.log(e);
+            console.log('trys to add to userhistory,');
             var timestamp = e.timestamp;
             var uv = e.uv;
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -13898,7 +13898,7 @@ var app = new Vue({
                 success: function success(e) {
                     if (e == 1) {
                         // succesfull added to userhistory -> change view
-                        //console.log('change the view');
+                        console.log('cronjob changed the view');
                         changeStamp(timestamp);
                         changeUv(uv);
                     }

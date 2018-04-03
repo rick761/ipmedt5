@@ -1,10 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="content">
-        <div class="inner_content history_txt">
 
-        <p class="message">Wil je terug?<a href="{{ route('home') }}"> Ga terug. </a> </p>
 
 
         <div class="dropdown">
@@ -52,8 +49,7 @@
                 @columnchart('Geschiedenis', 'poll_div')
 
 
-        </div>
-    </div>
+
 
 
 

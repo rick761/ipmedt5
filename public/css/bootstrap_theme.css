@@ -177,7 +177,7 @@ header.masthead h1 {
 
 header.masthead h2 {
     font-size: 1.3rem;
-    font-family: 'Lato';
+    //font-family: 'Lato';
 }
 
 @media (min-width: 992px) {

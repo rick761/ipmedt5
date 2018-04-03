@@ -246,12 +246,13 @@ body{
 }
 
 .signaal_uv_groot{
-    top: 62px;
+    top: 13px;
     width: 100%;
     position: absolute;
     display: block;
     text-align: center;
     font-size: 10em;
+    left: 0px;
 }
 
 body {

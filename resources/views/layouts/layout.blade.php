@@ -26,9 +26,9 @@
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
         <div class="container">
             @guest
-            <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">Zonnen App</a>
-            @else
                 <a class="navbar-brand js-scroll-trigger" href="{{ route('visitor') }}">Zonnen App</a>
+            @else
+                <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">Zonnen App</a>
             @endguest
 
             <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,9 +61,11 @@
             </div>
         </div>
     </nav>
-
+    <header class="masthead text-white text-center">
+        <div class="container">
     @yield('content')
-
+        </div>
+    </header>
 </div>
 
 <!-- Scripts -->

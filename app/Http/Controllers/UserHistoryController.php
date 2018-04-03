@@ -16,7 +16,7 @@ class UserHistoryController extends Controller
 
     public function index(Request $request)
     {
-        //var_dump($request->all());
+
 
         $toon_userhistory = Auth::User()->UserHistory()->get();
         foreach($toon_userhistory as $key=>$item){
@@ -36,7 +36,9 @@ class UserHistoryController extends Controller
             } else { $toon_userhistory->forget($key); }
         }
 
-        //dd($vandaag_userhistory);
+        $toon_userhistory = $toon_userhistory->sortBy('OntvangenSignaal.created_at');
+        //$test = $toon_userhistory->keyBy('OntvangenSignaal.created_at');
+        //dd($toon_userhistory);
 
         $geschiedenis = \Lava::DataTable();
         $geschiedenis->addStringColumn('Zonnesterkte')->addNumberColumn('Zonnekracht');

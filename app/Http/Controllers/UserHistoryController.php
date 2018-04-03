@@ -9,28 +9,52 @@ use App\OntvangenSignaal;
 use App\UserHistory;
 use Khill\Lavacharts\Lavacharts;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class UserHistoryController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $votes = \Lava::DataTable();
-        $votes->addStringColumn('Zonnesterkte')->addNumberColumn('Zonnekracht')
-            ->addRow(['13:50', 1])
-            ->addRow(['13:52', 2])
-            ->addRow(['13:54', 5])
-            ->addRow(['13:55', 4])
-            ->addRow(['13:56', 2])
-            ->addRow(['13:57', 3])
-            ->addRow(['13:58', 6])
-            ->addRow(['13:59', 4]);
-        $data['votes'] = \Lava::LineChart('Votes', $votes);
+        //var_dump($request->all());
+
+        $toon_userhistory = Auth::User()->UserHistory()->get();
+        foreach($toon_userhistory as $key=>$item){
+            $item->OntvangenSignaal;
+            if(!empty($item->OntvangenSignaal->created_at)){
+                if(!empty($request->datum)){
+                    $request_datum_parsed = Carbon::parse($request->datum);
+                    if(!($item->OntvangenSignaal->created_at->isSameAs('Y-m-d',$request_datum_parsed))){
+                        $toon_userhistory->forget($key);
+                    }
+                }
+                else{
+                    if(!($item->OntvangenSignaal->created_at->isToday())){
+                        $toon_userhistory->forget($key);
+                    }
+                }
+            } else { $toon_userhistory->forget($key); }
+        }
+
+        //dd($vandaag_userhistory);
+
+        $geschiedenis = \Lava::DataTable();
+        $geschiedenis->addStringColumn('Zonnesterkte')->addNumberColumn('Zonnekracht');
+
+        foreach($toon_userhistory as $i){
+
+            $geschiedenis->addRow([$i->OntvangenSignaal->created_at->format('H:i:s'), $i->OntvangenSignaal->uv]);
+        }
+
+        $data['votes'] = \Lava::ColumnChart('Geschiedenis', $geschiedenis);
+
+
 
         $datumsInDatabase = DB::table('userhistory')
             ->where('user_id', '=', Auth::id())
             ->join('ontvangensignalen', 'userhistory.ontvangen_signaal_id', '=', 'ontvangensignalen.id')
             ->select(DB::raw('DATE(`created_at`)'))
+            ->orderBy('DATE(`created_at`)','desc')
             ->distinct()
             ->get();
 
@@ -41,16 +65,22 @@ class UserHistoryController extends Controller
 //            ->get();
 
 //        dd($datumsInDatabase);
-
+        $gekozendag = Carbon::now();
+        if(!empty($request->datum)){
+            $gekozendag = $request->datum;
+        }
+        $request->datum;
         return view('userHistoryGraph',
             [
                 'Votes' => $data,
-                'datumsInDatabase' => $datumsInDatabase
+                'datumsInDatabase' => $datumsInDatabase,
+                'huidige_datum' => $gekozendag
             ]);
     }
 
     public function veranderGrafiek(Request $request){
-        dd($request->datum);
+        //dd($request->datum);
+        return $this->index($request);
     }
 
 

@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="content">
+        <div class="inner_content history_txt">
 
-
-    <h1> Zie hieronder voor mooie grafiekjes 🌚 </h1>
+        <p class="message">Wil je terug?<a href="{{ route('home') }}"> Ga terug. </a> </p>
 
 
         <div class="dropdown">
@@ -17,18 +17,44 @@
                     @foreach($datumsInDatabase[$i] as $datum)
                         <form method="post" action="{{route('veranderGrafiek')}}">
                             @csrf
-                            <input class="dropdown-item" type="submit" value={{$datum}}>
+                            @if(Carbon\Carbon::parse($datum) == Carbon\Carbon::today())
+                                <input class="dropdown-item" type="submit" value="vandaag">
+                            @elseif(Carbon\Carbon::parse($datum) == Carbon\Carbon::yesterday())
+                                <input class="dropdown-item" type="submit" value="gister">
+                            @else
+                                <input class="dropdown-item" type="submit" value="{{$datum}}">
+                            @endif
+
                             <input type="hidden" name="datum" value={{$datum}}>
                         </form>
                     @endForeach
                 @endfor
             </div>
+        </div>
+        </div>
+            <p class="message">Geschiedenis
+
+                @if(Carbon\Carbon::parse($huidige_datum) == Carbon\Carbon::today())
+                vandaag:
+                @elseif(Carbon\Carbon::parse($huidige_datum) == Carbon\Carbon::yesterday())
+                gister:
+                @else
+                {{$huidige_datum}}
+                @endif
+
+
+
+            </p>
+
+            <div class="chart_container">
+                <div id="poll_div"></div>
+                </div>
+                @columnchart('Geschiedenis', 'poll_div')
+
 
         </div>
-        <hr>
-
-
-    <div id="poll_div"></div>
     </div>
-    @linechart('Votes', 'poll_div')
+
+
+
 @endsection

@@ -138,6 +138,7 @@ body{
     z-index: 1;
     background: rgba(255,255,255,0.9);
     max-width: 360px;
+    min-width: 360px;
     min-height: 260px;
     margin: 0 auto 40px;
     padding: 0px;
@@ -201,9 +202,7 @@ body{
     background: #FF8C00;
 }
 .message {
-    margin: 15px 0 0;
-    color: #b3b3b3;
-    font-size: 12px;
+
 }
 .inner_content .message a {
     color: #FFD700;
@@ -394,4 +393,15 @@ body {
 [type="radio"]:disabled:checked + label:after
 {
     background: #aaa;
+}
+.chart_container{
+    //padding-bottom:45px;
+
+}
+ p {
+    font-size: 1em;
+    font-weight: 600;
+    color: #000000;
+    padding: 4px;
+    padding-bottom: 8px;
 }

@@ -5,7 +5,7 @@
 
 
         <div class="dropdown">
-            <button class="btn btn-warning dropdown-toggle" type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="text-transform:uppercase;" class="btn  dropdown-toggle" type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Selecteer datum
             </button>
 
@@ -31,12 +31,12 @@
         </div>
             <p class="message">Geschiedenis
 
-                @if(Carbon\Carbon::parse($huidige_datum) == Carbon\Carbon::today())
+                @if(Carbon\Carbon::parse($huidige_datum)->isToday())
                 vandaag:
-                @elseif(Carbon\Carbon::parse($huidige_datum) == Carbon\Carbon::yesterday())
+                @elseif(Carbon\Carbon::parse($huidige_datum)->isYesterday())
                 gister:
                 @else
-                {{$huidige_datum}}
+                    <span class="message">{{$huidige_datum}}</span>
                 @endif
 
 

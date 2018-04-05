@@ -54,7 +54,8 @@ class UserHistoryController extends Controller
             'backgroundColor'=>'none',
             'width'=>500,
             'legend' => [
-            'position' => 'in'
+            'position' => 'in',
+            'fontColor' => 'white'
             ]
 
         ]);

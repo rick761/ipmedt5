@@ -32,6 +32,23 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $userhistorys_vandaag = Auth::User()->UserHistory()->get();
+        $tijd_in_zon = 0;
+
+        foreach($userhistorys_vandaag as $a){
+            $a->OntvangenSignaal;
+        }
+
+
+        $userhistorys_vandaag = $userhistorys_vandaag->where('OntvangenSignaal.created_at','>=', Carbon::today());
+        if($userhistorys_vandaag->count() >0){
+            //dump($userhistorys_vandaag);
+            foreach($userhistorys_vandaag as $historyItem){
+                //dump($historyItem->OntvangenSignaal->created_at->diff(Carbon::now()));
+            }
+            //$totalDuration = $userhistorys_vandaag->OntvangenSignaal->created_at;//->diff(Carbon::now());
+        }
+
 
         $laatsteUserHistory= DB::table('userhistory')
             ->where('user_id','=' , Auth::id())

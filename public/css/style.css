@@ -426,3 +426,7 @@ body {
      background-color: #6c757d !important;
      border-color: #ffc107;
  }
+
+ .dropdown{
+     margin: 0 0 45px 0;
+ }

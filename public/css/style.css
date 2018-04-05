@@ -216,11 +216,16 @@ body{
     font-size: 10em;
     left: 0px;
 }
-
+#navbarResponsive{
+    background: linear-gradient(to right, #1CB5E0, royalblue) fixed;
+}
+#mainNav{
+    background: linear-gradient(to right, #1CB5E0, royalblue) fixed;
+}
 body {
     /*background: linear-gradient(to right top, #051937,#A8EB12) fixed;*/
     /*background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12) fixed;*/
-    background: linear-gradient(to right top, #293e5e, #365681, #426fa5, #4d89cb, #56a5f2) fixed;
+    background: linear-gradient(to right, #1CB5E0, royalblue) fixed;
 }
 
 

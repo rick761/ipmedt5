@@ -16,9 +16,11 @@ class Advies extends Migration
         //
         Schema::create('adviezen',function(Blueprint $table){
             $table->increments('id');
-            $table->enum('categorie', array('geen', 'zwak','normaal','sterk','zeer sterk','gevaarlijk'));
+            $table->integer('zonkracht');
+            $table->enum('categorie', array('vrijwel geen', 'zwak','matig','sterk','zeer sterk','gevaarlijk'));
             $table->string('tekst');
             $table->enum('huidtype', array('1','2','3','4'));
+            $table->integer('minuten');
         });
     }
 

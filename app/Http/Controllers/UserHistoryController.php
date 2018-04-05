@@ -13,6 +13,10 @@ use Carbon\Carbon;
 
 class UserHistoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('huidtypecheck');
+    }
 
     public function index(Request $request)
     {

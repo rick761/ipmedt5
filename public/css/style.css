@@ -385,3 +385,18 @@ body {
      background-color: red !important;
 
  }
+.adviezen h2{
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #ffffff;
+    padding: 4px;
+    padding-bottom: 0px;
+    margin-bottom: 40px;
+}
+.adviezen p{
+    color: white;
+    opacity: 0.9;
+    font-size: 1.1em;
+    font-weight: 300;
+    padding: 0px;
+}

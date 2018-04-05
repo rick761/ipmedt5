@@ -51,6 +51,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'huidtypecheck' => \App\Http\Middleware\huidtypeCheck::class,
         'loggedinredirect'=>\App\Http\Middleware\LoggedInRedirect::class,
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

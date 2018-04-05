@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     {
          $this->call([
              Advies::class,
-             AdviesZonnenbrand::class,
              OntvangenSignaal::class,             
              QuizVraag::class,
 			 QuizAntwoord::class,

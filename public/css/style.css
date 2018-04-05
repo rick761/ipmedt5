@@ -322,6 +322,7 @@ body {
     content: '';
     width: 8px;
     height: 8px;
+    background: #0c5460;
     position: absolute;
     top: 5px;
     left: 5px;

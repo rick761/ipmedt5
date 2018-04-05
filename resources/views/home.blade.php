@@ -167,44 +167,48 @@
             {{--</div>--}}
 
             <!--Table-->
-            <table class="table table-striped table-bordered">
+            @if($laatsteSignaal->uv <= 0.4)
+                <div class="adviezen">
+                    <h2>U kunt onbeperkt onbeschermd zonnen</h2>
+                </div>
+            @else
+                <p>{{$advies->tekst}}</p>
+                <table class="table table-striped table-bordered">
 
-                <!--Table head-->
-                <thead>
-                <tr>
-                    <th>Zonnebrand advies</th>
-                    <th>Advies Tijd</th>
-                </tr>
-                </thead>
-                <!--Table head-->
+                    <!--Table head-->
+                    <thead>
+                    <tr>
+                        <th>Zonnebrand advies</th>
+                        <th>Advies Tijd</th>
+                    </tr>
+                    </thead>
+                    <!--Table head-->
 
-                <!--Table body-->
-                <tbody>
-                <tr>
+                    <!--Table body-->
+                    <tbody>
+                    <tr>
 
-                    <td>Factor 10</td>
-                    <td>{{$factoradvies10}}</td>
-                </tr>
-                <tr>
+                        <td>Factor 10</td>
+                        <td>{{$factoradvies10}}</td>
+                    </tr>
+                    <tr>
 
-                    <td>Factor 20</td>
-                    <td>{{$factoradvies20}}</td>
-                </tr>
-                <tr>
+                        <td>Factor 20</td>
+                        <td>{{$factoradvies20}}</td>
+                    </tr>
+                    <tr>
 
-                    <td>Factor 30</td>
-                    <td>{{$factoradvies30}}</td>
-                </tr>
-                <tr>
+                        <td>Factor 30</td>
+                        <td>{{$factoradvies30}}</td>
+                    </tr>
+                    <tr>
 
-                    <td>Factor 50</td>
-                    <td>{{$factoradvies50}}</td>
-                </tr>
-                </tbody>
-                <!--Table body-->
+                        <td>Factor 50</td>
+                        <td>{{$factoradvies50}}</td>
+                    </tr>
+                    </tbody>
+            @endif
 
-            </table>
-            <!--Table-->
 
 
 

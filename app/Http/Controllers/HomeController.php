@@ -93,11 +93,17 @@ class HomeController extends Controller
             return sprintf($format, $uren, $minuten);
         }
 
-        $factoradvies10 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 10, '%02d hours %02d minutes')));
-        $factoradvies20 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 20, '%02d hours %02d minutes')));
-        $factoradvies30 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 30, '%02d hours %02d minutes')));
-        $factoradvies50 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 50, '%02d hours %02d minutes')));
+        $factoradvies10 = 1;
+        $factoradvies20 = 1;
+        $factoradvies30 = 1;
+        $factoradvies50 = 1;
 
+        if ($zonsterkte > 0) {
+            $factoradvies10 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 10, '%02d hours %02d minutes')));
+            $factoradvies20 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 20, '%02d hours %02d minutes')));
+            $factoradvies30 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 30, '%02d hours %02d minutes')));
+            $factoradvies50 = str_replace("minutes","minuten",str_replace("hours","uur en",convertToHoursMins($advies->minuten * 50, '%02d hours %02d minutes')));
+        }
 
 
         return view('home',[

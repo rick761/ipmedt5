@@ -63,7 +63,7 @@
     </nav>
     <header class="masthead text-white text-center">
         <div class="container">
-    @yield('content')
+            @yield('content')
         </div>
     </header>
 </div>

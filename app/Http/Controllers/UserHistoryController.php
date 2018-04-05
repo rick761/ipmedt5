@@ -41,14 +41,25 @@ class UserHistoryController extends Controller
         //dd($toon_userhistory);
 
         $geschiedenis = \Lava::DataTable();
-        $geschiedenis->addStringColumn('Zonnesterkte')->addNumberColumn('Zonnekracht');
+        $geschiedenis->addStringColumn('Zonnesterkte')->addNumberColumn('');
 
         foreach($toon_userhistory as $i){
 
             $geschiedenis->addRow([$i->OntvangenSignaal->created_at->format('H:i:s'), $i->OntvangenSignaal->uv]);
         }
 
-        $data['votes'] = \Lava::ColumnChart('Geschiedenis', $geschiedenis);
+        $data['votes'] = \Lava::ColumnChart('Geschiedenis', $geschiedenis,[
+            'title' => 'Zonnen sterkte in UV',
+            'colors' => ['#6c757d'],
+            'backgroundColor'=>'none',
+            'width'=>500,
+            'legend' => [
+            'position' => 'in'
+            ]
+
+        ]);
+
+        ;
 
 
 

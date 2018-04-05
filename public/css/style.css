@@ -371,7 +371,7 @@ body {
     padding-bottom: 8px;
 }
 
-<<<<<<< HEAD
+
  button{
      color: #fff;
      background-color: #6c757d !important;
@@ -380,4 +380,8 @@ body {
 
  .dropdown{
      margin: 0 0 45px 0;
+
+ .navbar-toggler-right{
+     background-color: red !important;
+
  }

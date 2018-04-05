@@ -35,7 +35,33 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+        $eerste_userhistory_vandaag = DB::table('userhistory')
+            ->where('user_id','=' , Auth::id())
+            ->join('ontvangensignalen', 'userhistory.ontvangen_signaal_id', '=', 'ontvangensignalen.id')
+            ->orderBy('created_at','asc')
+            ->get();
+        foreach($eerste_userhistory_vandaag as $key => $item){
+            if(!(Carbon::parse($item->created_at)->isToday())){
+                $eerste_userhistory_vandaag->forget($key);
+            }
+        }
 
+        //gemiddelde berekenen
+        $gemiddelde_uv_straling = 0;
+        foreach($eerste_userhistory_vandaag as $item){
+            $gemiddelde_uv_straling += $item->uv;
+        }
+        $gemiddelde_uv_straling= $gemiddelde_uv_straling/$eerste_userhistory_vandaag->count();
+        //$gemiddelde_uv_straling = $gemiddelde_uv_straling/$eerste_userhistory_vandaag->count();
+        //dump($gemiddelde_uv_straling.$eerste_userhistory_vandaag->count());
+        $eerste_userhistory_vandaag=$eerste_userhistory_vandaag->first();
+        if(!empty($eerste_userhistory_vandaag)){
+            $eerste_userhistory_vandaag = Carbon::parse($eerste_userhistory_vandaag->created_at)->diff(Carbon::now());
+            $h = $eerste_userhistory_vandaag->h;
+            $m = $eerste_userhistory_vandaag->i;
+            $s = $eerste_userhistory_vandaag->s;
+            $eerste_userhistory_vandaag = $h.' uur, '.$m.' minuten en '.$s.' seconden geleden';
+        }
 
 
         $laatsteUserHistory= DB::table('userhistory')
@@ -91,12 +117,14 @@ class HomeController extends Controller
             'laatsteSignaal' => $laatsteSignaal,
             'laatsteUserHistory'=> $laatsteUserHistory,
             'user' => Auth::user(),
-            'message'=>$message,
-            'advies'=>$advies,
-            'factoradvies10'=>$factoradvies10,
-            'factoradvies20'=>$factoradvies20,
-            'factoradvies30'=>$factoradvies30,
-            'factoradvies50'=>$factoradvies50
+            'message' => $message,
+            'advies' => $advies,
+            'factoradvies10' => $factoradvies10,
+            'factoradvies20' => $factoradvies20,
+            'factoradvies30' => $factoradvies30,
+            'factoradvies50' => $factoradvies50,
+            'eerste_userhistory_vandaag' => $eerste_userhistory_vandaag,
+            'gemiddelde_uv_straling' => $gemiddelde_uv_straling
         ]);
     }
 

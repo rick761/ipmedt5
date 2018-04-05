@@ -157,25 +157,8 @@
 
 
             <h2 class="font-weight-light mb-0">De zonnen sterkte is: <span class="signaal_uv">{{$laatsteSignaal->uv}}</span> / 8 om  <span class="signaal_created_at">"{{$laatsteSignaal->created_at}}"</span></h2>
-<<<<<<< HEAD
 
-            <div class="adviezen">
-                <h2>{{$advies->tekst}}</h2>
-                <p>Met factor 10 kunt u {{$factoradvies10}} zonnen!</p>
-                <p>Met factor 20 kunt u {{$factoradvies20}} zonnen!</p>
-                <p>Met factor 30 kunt u {{$factoradvies30}} zonnen!</p>
-                <p>Met factor 50 kunt u {{$factoradvies50}} zonnen!</p>
-            </div>
-=======
-            <br />
-            {{--<div class="adviezen">--}}
-                {{--<p>{{$advies->tekst}}</p>--}}
-                {{--<p>Met factor 10 kunt u {{$factoradvies10}} zonnen!</p>--}}
-                {{--<p>Met factor 30 kunt u {{$factoradvies20}} zonnen!</p>--}}
-                {{--<p>Met factor 30 kunt u {{$factoradvies30}} zonnen!</p>--}}
-                {{--<p>Met factor 50 kunt u {{$factoradvies50}} zonnen!</p>--}}
-            {{--</div>--}}
-
+            <br>
             <!--Table-->
             <table class="table table-striped table-bordered">
 
@@ -210,12 +193,20 @@
                     <td>Factor 50</td>
                     <td>{{$factoradvies50}}</td>
                 </tr>
+                @if(isset($eerste_userhistory_vandaag))
+                <tr>
+                    <td colspan="2">
+                        De eerste meting van vandaag is:  {{ $eerste_userhistory_vandaag }}. <br>
+                        Met een gemiddelde UV-straling van {{$gemiddelde_uv_straling}}.
+                    </td>
+                </tr>
+                    @endif
                 </tbody>
                 <!--Table body-->
 
             </table>
             <!--Table-->
->>>>>>> 3d3404e647240cc261253362f5429bce7e717ecf
+
 
 
 

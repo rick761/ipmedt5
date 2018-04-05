@@ -15,8 +15,6 @@
                 <input type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="wachtwoord"/>
                 <input type="password" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="password_confirmation" value="{{ old('email') }}" required placeholder="verifireer wachtwoord"/>
                 <button type="submit">Registreer</button>
-                <p class="message">Al geregistreerd? <a href="{{route('login')}})" >login</a></p>
-                <p class="message">Wil je niet registreren? <a href="{{route('visitor')}}" >Ga terug.</a></p>
                 @if ($errors->has('name'))
 
                     <span class="invalid-feedback">

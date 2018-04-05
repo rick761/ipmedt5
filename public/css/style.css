@@ -5,10 +5,6 @@
     -webkit-font-smoothing: antialiased;
 }
 
-div.content{
-    margin-top:45px;
-}
-
 .right_corner_info{
     margin:15px !important;
     text-align: left;
@@ -32,11 +28,11 @@ p {
 }
 
 a {
-    color: #FFD700;
+    color: deepskyblue;
     text-decoration: none;
 }
 a:hover{
-    color: #FFD700;
+    color: cornflowerblue;
     text-decoration: none;
 }
 
@@ -78,31 +74,6 @@ a:hover{
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 body{
     padding: 0;
     margin: 0;
@@ -116,15 +87,6 @@ body{
 
     -webkit-flex-flow: row wrap;
     justify-content: space-around;
-
-    background: #FFD700; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #FFD700, #FF8C00);
-    background: -moz-linear-gradient(right, #FFD700, #FF8C00);
-    background: -o-linear-gradient(right, #FFD700, #FF8C00);
-    background: linear-gradient(to left, #FFD700, #FF8C00);
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .main{
@@ -136,10 +98,10 @@ body{
 .content{
     position: relative;
     z-index: 1;
-    background: rgba(255,255,255,0.9);
+    background: #6c757d;
     max-width: 360px;
-    min-width: 360px;
-    min-height: 260px;
+    min-width: 260px;
+    /*min-height: 260px;*/
     margin: 0 auto 40px;
     padding: 0px;
     text-align: center;
@@ -187,7 +149,7 @@ body{
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #FFD700;
+    background: deepskyblue;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -199,13 +161,13 @@ body{
     margin-bottom: 45px;
 }
 .inner_content button:hover,.form button:active,.form button:focus {
-    background: #FF8C00;
+    background: cornflowerblue;
 }
 .message {
 
 }
 .inner_content .message a {
-    color: #FFD700;
+    color: #4d89cb;
     text-decoration: none;
 }
 .inner_content .register-form {
@@ -242,7 +204,7 @@ body{
     text-decoration: none;
 }
 .container .info span .fa {
-    color: #EF3B3A;
+    color: #4d89cb;
 }
 
 .signaal_uv_groot{
@@ -256,14 +218,9 @@ body{
 }
 
 body {
-    background: #FFD700; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #FFD700, #FF8C00);
-    background: -moz-linear-gradient(right, #FFD700, #FF8C00);
-    background: -o-linear-gradient(right, #FFD700, #FF8C00);
-    background: linear-gradient(to left, #FFD700, #FF8C00);
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /*background: linear-gradient(to right top, #051937,#A8EB12) fixed;*/
+    /*background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12) fixed;*/
+    background: linear-gradient(to right top, #293e5e, #365681, #426fa5, #4d89cb, #56a5f2) fixed;
 }
 
 
@@ -299,12 +256,6 @@ body {
     padding: 4px;
     padding-bottom: 8px;
     text-align: left;
-
-    /* background: #FFD700;
-    background: -webkit-linear-gradient(right, #FFD700, #FF8C00);
-    background: -moz-linear-gradient(right, #FFD700, #FF8C00);
-    background: -o-linear-gradient(right, #FFD700, #FF8C00);
-    background: linear-gradient(to left, #FFD700, #FF8C00); */
 }
 
 
@@ -317,7 +268,7 @@ body {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #6c757d;
+    background: #56a5f2;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -330,7 +281,7 @@ body {
 }
 
 .containervragen button:hover,.form button:active,.form button:focus {
-    background: #FF8C00;
+    background: #4d89cb;
 }
 
 .containervragen ul{
@@ -371,7 +322,6 @@ body {
     content: '';
     width: 8px;
     height: 8px;
-    background: #FF8C00;
     position: absolute;
     top: 5px;
     left: 5px;
@@ -409,20 +359,18 @@ body {
     background: #aaa;
 }
 .chart_container{
-    //padding-bottom:45px;
+    padding-bottom:45px;
 
 }
  p {
 
     font-size: 1.1em;
     font-weight: 600;
-    color: #000000;
+    color: white;
     padding: 4px;
     padding-bottom: 8px;
 }
 
- button{
-     color: #fff;
-     background-color: #6c757d !important;
-     border-color: #ffc107;
+ .navbar-toggler-right{
+     background-color: red !important;
  }

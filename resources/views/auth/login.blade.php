@@ -10,8 +10,6 @@
                 <input type="text" placeholder="email"  type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus />
                 <input type="password" placeholder="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required/>
                 <button type="submit">login</button>
-                <p class="message">Niet geregistreerd? <a href="{{route('register')}}" onclick="myFunction()">Maak een account.</a></p>
-                <p class="message">Wil je niet inloggen? <a href="{{route('visitor')}}" onclick="myFunction()">Ga terug.</a></p>
             </form>
             @if ($errors->has('email'))
                 <span class="invalid-feedback">

@@ -23,6 +23,10 @@
 <body>
 <div id="app">
 
+    <div class="bgnew" style="
+				background-image: linear-gradient(to right top,
+				#1e65d0, #3360d5, #465bd9, #5954db, #6c4bdc);"></div>
+
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
         <div class="container">
             @guest

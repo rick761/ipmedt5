@@ -157,16 +157,6 @@
 
 
             <h2 class="font-weight-light mb-0">De zonnen sterkte is: <span class="signaal_uv">{{$laatsteSignaal->uv}}</span> / 8 om  <span class="signaal_created_at">"{{$laatsteSignaal->created_at}}"</span></h2>
-            <br />
-            {{--<div class="adviezen">--}}
-                {{--<p>{{$advies->tekst}}</p>--}}
-                {{--<p>Met factor 10 kunt u {{$factoradvies10}} zonnen!</p>--}}
-                {{--<p>Met factor 30 kunt u {{$factoradvies20}} zonnen!</p>--}}
-                {{--<p>Met factor 30 kunt u {{$factoradvies30}} zonnen!</p>--}}
-                {{--<p>Met factor 50 kunt u {{$factoradvies50}} zonnen!</p>--}}
-            {{--</div>--}}
-
-            <!--Table-->
             @if($laatsteSignaal->uv <= 0.4)
                 <div class="adviezen">
                     <h2>U kunt onbeperkt onbeschermd zonnen</h2>
@@ -208,12 +198,7 @@
                     </tr>
                     </tbody>
             @endif
-
-
-
-
-
-
+                    
 
 
     <!--

@@ -164,7 +164,7 @@
             <div class="adviezen">
                 <h2>{{$advies->tekst}}</h2>
                 <p>Met factor 10 kunt u {{$factoradvies10}} zonnen!</p>
-                <p>Met factor 30 kunt u {{$factoradvies20}} zonnen!</p>
+                <p>Met factor 20 kunt u {{$factoradvies20}} zonnen!</p>
                 <p>Met factor 30 kunt u {{$factoradvies30}} zonnen!</p>
                 <p>Met factor 50 kunt u {{$factoradvies50}} zonnen!</p>
             </div>

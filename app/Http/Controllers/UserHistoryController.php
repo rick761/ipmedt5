@@ -49,7 +49,7 @@ class UserHistoryController extends Controller
             'title' => 'Zonnen sterkte in UV',
             'colors' => ['#6c757d'],
             'backgroundColor'=>'none',
-            'width'=>500,
+
             'legend' => [
             'position' => 'in',
             'fontColor' => 'white',

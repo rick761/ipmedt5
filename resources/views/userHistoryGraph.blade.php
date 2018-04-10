@@ -45,8 +45,9 @@
         <!---------Tabel wordt weergegeven------->
             <div class="chart_container">
                 <div id="poll_div"></div>
-                </div>
+
                 @areachart('Geschiedenis', 'poll_div')
+            </div>
 
 
 

@@ -36,6 +36,7 @@ Route::get('/addSignaaltoDbEvent/{timestamp}/{uv}',function($apivalue,$uv){ // v
 
 
 Route::post('/addUserHistory', 'UserHistoryController@add')->name('addUserHistory'); //toevoegen
+Route::get('/phpinfo',function(){dd(phpinfo());  });
 
 Route::post('/veranderGrafiek', 'UserHistoryController@veranderGrafiek')->name('veranderGrafiek'); //geschiedenis andere dag bekijken
 

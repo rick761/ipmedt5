@@ -13,8 +13,8 @@
             <ul class="antwoorden" style="list-style-type: none;">
                 @foreach($quizvraag->quizAntwoord as $antwoorden)
                     <li>
-                        <input type="checkbox" name="{{$antwoorden->id}}" id="test{{$antwoorden->id}}" value="{{$antwoorden->quiz_vraag_id}}">
-                        <label for="test{{$antwoorden->id}}">  {{$antwoorden->tekst}}</label>
+                        <input type="radio" name="{{$quizvraag->id}}" id="{{$antwoorden->id}}" value="{{$antwoorden->letter}}">
+                        <label for="{{$antwoorden->id}}">  {{$antwoorden->tekst}}</label>
                     </li>
                 @endforeach
             </ul>

@@ -220,7 +220,7 @@
                     <tr>
                         <td colspan="2">
                             De eerste meting van vandaag is:  {{ $eerste_userhistory_vandaag }}. <br>
-                            Met een gemiddelde UV-straling van {{$gemiddelde_uv_straling}}.
+                            De gemiddelde UV-straling vandaag is {{$gemiddelde_uv_straling}}.
                         </td>
                     </tr>
                 @endif

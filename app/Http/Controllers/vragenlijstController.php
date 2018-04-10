@@ -33,93 +33,37 @@ class vragenlijstController extends Controller
         ]);
     }
     public function voerVragenlijstIn(Request $request){
-        $message = '';
 
-        //check for dubbele antwoorden
-        $controleer_dubbele_antwoorden = false;
-        $vorige_vraag_id = '';
-        foreach($request->all() as $request_item_name => $request_item_value){
-            if($request_item_name!='_token'){
-                if($vorige_vraag_id == $request_item_value){
-                    $controleer_dubbele_antwoorden = true;
-                    $message .= 'Er zijn dubbele antwoorden. ';
+            if(count($request->all()) == 6) { // check of alle antwoorden zijn ingevoerd
+
+                //dd($request->all());
+                $punten=0;
+                $huidtype_resultaat=0;
+                foreach($request->all() as $veld_key => $veld){
+                    if($veld_key != '_token'){
+                        if($veld == 'a'){$punten+=1;}
+                        if($veld == 'b'){$punten+=2;}
+                        if($veld == 'c'){$punten+=3;}
+                        if($veld == 'd'){$punten+=4;}
+                    }
                 }
-                $vorige_vraag_id = $request_item_value;
+
+                if($punten <= 7){$huidtype_resultaat='1';}
+                if($punten > 7 && $punten <= 12){$huidtype_resultaat='2';}
+                if($punten > 12 && $punten <= 17){$huidtype_resultaat='3';}
+                if($punten > 17){$huidtype_resultaat='4';}
+
+                //dd($punten,$huidtype_resultaat);
+                $user =  Auth::User();
+                $user->huidtype = $huidtype_resultaat;
+                $user->save();
+
+                return redirect()->action('HomeController@index');
+
+            } else {
+                return view('vragenlijst', [
+                    'quizvragen' => QuizVraag::All(),
+                ]);
             }
-        }
-
-       //check of alle antwoorden zijn ingevoerd
-        $controleer_voor_alle_antwoorden = false;
-        $alles_ingevoerd_array=[];
-        foreach($request->all() as $request_item_name => $request_item_value) {
-            if($request_item_name!='_token') {
-                $alles_ingevoerd_array[$request_item_value] = 'filled';
-            }
-        }
-        if(count($alles_ingevoerd_array)==5){
-            $controleer_voor_alle_antwoorden = true;
-        } else {
-            $message .= 'Niet alle velden zijn ingevoerd. ';
-        }
-
-        //voer data in de database
-        if($controleer_voor_alle_antwoorden == true && $controleer_dubbele_antwoorden == false) {
-            $resultaat_invoer_array = [];
-            foreach ($request->all() as $request_item_name => $request_item_value) {
-                if ($request_item_name != '_token') {
-                    $resultaat_invoer_array[$request_item_value] = $request_item_name;
-                }
-            }
-            $ingevulde_antwoorden = QuizAntwoord::find([$resultaat_invoer_array[1], $resultaat_invoer_array[2], $resultaat_invoer_array[3],$resultaat_invoer_array[4], $resultaat_invoer_array[5]]);
-            $puntencount_antwoorden = 0;
-            foreach($ingevulde_antwoorden as $antwoord_item){
-                switch ($antwoord_item->letter){
-                    case 'a':
-                        $puntencount_antwoorden += 1;
-                        break;
-                    case 'b':
-                        $puntencount_antwoorden += 2;
-                        break;
-                    case 'c':
-                        $puntencount_antwoorden += 3;
-                        break;
-                    case 'd':
-                        $puntencount_antwoorden += 4;
-                        break;
-                }
-            }
-
-            $huidtype_restultaat = '';
-            if( $puntencount_antwoorden <= 7 ){
-                $huidtype_restultaat = '1';
-            }
-            if( $puntencount_antwoorden >= 8 && $puntencount_antwoorden <= 12 ){
-                $huidtype_restultaat = '2';
-            }
-            if( $puntencount_antwoorden >= 13 && $puntencount_antwoorden <= 17 ){
-                $huidtype_restultaat = '3';
-            }
-            if( $puntencount_antwoorden >= 18 ){
-                $huidtype_restultaat = '4';
-            }
-            $user =  User::find(Auth::id());
-            $user->huidtype = $huidtype_restultaat;
-            $user->save();
-
-
-
-            $message = 'Uw nieuwe huidtype is '.$huidtype_restultaat.'.';
-
-
-
-            return redirect()->action('HomeController@index',['message'=>$message]);
-        }
-
-
-        return view('vragenlijst',[
-            'quizvragen' => QuizVraag::All(),
-            'message' => $message,
-
-        ]);
     }
 }

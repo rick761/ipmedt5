@@ -22,8 +22,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('huidtypecheck');
-        $this->middleware('auth');
+        $this->middleware('huidtypecheck'); //als huidtype nog niet ingesteld is wordt doorverwezen naar de vragenlijst
+        $this->middleware('auth'); // moet ingelogd zijn (check)
     }
 
     /**
@@ -40,22 +40,24 @@ class HomeController extends Controller
             ->join('ontvangensignalen', 'userhistory.ontvangen_signaal_id', '=', 'ontvangensignalen.id')
             ->orderBy('created_at','asc')
             ->get();
+        //gebruikersgeschiedenis  wordt opgehaald
+
         foreach($eerste_userhistory_vandaag as $key => $item){
             if(!(Carbon::parse($item->created_at)->isToday())){
                 $eerste_userhistory_vandaag->forget($key);
             }
-        }
+        }// als gebruikersgeschiedenis niet vandaag is wordt het veld weggehaald uit de collection.
 
-        //gemiddelde berekenen
+
+        //gemiddelde wordt berekend van vandaag voor een advies.
         $gemiddelde_uv_straling = 0;
         foreach($eerste_userhistory_vandaag as $item){
             $gemiddelde_uv_straling += $item->uv;
-        }
+        }//alle uv waardes worden toegevoegd
 		if($eerste_userhistory_vandaag->count() > 0 ){
 			$gemiddelde_uv_straling= $gemiddelde_uv_straling/$eerste_userhistory_vandaag->count();
-		}
-        //$gemiddelde_uv_straling = $gemiddelde_uv_straling/$eerste_userhistory_vandaag->count();
-        //dump($gemiddelde_uv_straling.$eerste_userhistory_vandaag->count());
+		}//uv waardes worden gedeeld door aantall -> gemiddelde vandaag wordt berekend
+
         $eerste_userhistory_vandaag=$eerste_userhistory_vandaag->first();
         if(!empty($eerste_userhistory_vandaag)){
             $eerste_userhistory_vandaag = Carbon::parse($eerste_userhistory_vandaag->created_at)->diff(Carbon::now());
@@ -63,21 +65,21 @@ class HomeController extends Controller
             $m = $eerste_userhistory_vandaag->i;
             $s = $eerste_userhistory_vandaag->s;
             $eerste_userhistory_vandaag = $h.' uur, '.$m.' minuten en '.$s.' seconden geleden';
-        }
+        } // de tijd geleden van de laatste
 
 
         $laatsteUserHistory= DB::table('userhistory')
             ->where('user_id','=' , Auth::id())
             ->join('ontvangensignalen', 'userhistory.ontvangen_signaal_id', '=', 'ontvangensignalen.id')
             ->orderBy('created_at','desc')
-            ->first();
+            ->first(); // de laatste userhistory wordt getoond
 
         $laatsteSignaal = OntvangenSignaal::orderBy('created_at', 'desc')
-            ->first();
+            ->first(); //laatstesignaal
 
         $message=null;
         if(!empty($request['message'])){
-            $message = $request['message'];
+            $message = $request['message']; //
         }
 
 
@@ -89,14 +91,14 @@ class HomeController extends Controller
             $huidtype = Auth::User()->huidtype;
         }
 
-        $zonsterkte = round($laatsteSignaal -> uv);
+        $zonsterkte = round($laatsteSignaal -> uv); //afgeronde uv straling
 
         $advies = DB::table('adviezen')
             ->where('zonkracht', '=', $zonsterkte)
             ->where('huidtype', '=', $huidtype)
-            ->first();
+            ->first(); //zoekt alle adviezen op basis van huidtype en zonkracht
 
-        function convertToHoursMins($time, $format = '%02d:%02d') {
+        function convertToHoursMins($time, $format = '%02d:%02d') { //deze functie maakt van bijvoorbeeld 120 minuten ; 2 uur
             if ($time < 1) {
                 return;
             }

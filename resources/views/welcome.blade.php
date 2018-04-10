@@ -6,8 +6,8 @@
 
     <span class="signaal_uv_groot">{{ round($laatsteSignaal->uv) }}</span>
 
-    <!--<div class=" inner_content  mb-5 d-block mx-auto">-->
-    <?php $suncolor = ''; ?>
+
+    <?php $suncolor = ''; ?> <!--------------switch om de zon weer te geven in kleur op basis van zonsterkte-->
     @switch(intval($laatsteSignaal->uv))
         @case(0)
         @case(1)
@@ -54,7 +54,7 @@
     $black = 'none';
     ?>
 
-
+    <!--------------switch om een progressbar weer te geven in kleur op basis van zonsterkte-->
     @switch(intval($laatsteSignaal->uv))
         @case(0)
         <?php
@@ -170,27 +170,6 @@
 	</table>
 
 
-
-
-
-
-
-
-    <!--
-        <span class="signaal_created_at">{{$laatsteSignaal->created_at}}</span>
-        <span ></span>
-        <span class="signaal_uv_groot">{{ round($laatsteSignaal->uv) }}</span>
-        <p class="message">Zonnensterkte: <span class="signaal_uv" class="highlight">{{$laatsteSignaal->uv}}</span> / 8</p>
-        <p class="message">Uw geschiedenis?<a href="{{ route('userHistory') }}"> bekijk. </a> </p>
-        <p class="message">Ander huidtype?<a href="{{ route('vragenlijst') }}"> Vul vragenlijst in. </a> </p>
-        <p class="message">Uitloggen? <a href="{{ url('/logout') }}"> logout </a> </p>
-        <a href="{{ route('vragenlijst') }}">Stel je huidtype in</a>
-        <
-        Uw huidtype is:
-            <h1>{{ $laatsteSignaal->uv }} /11</h1>
-        tijd:
-        <h2> {{ $laatsteSignaal->created_at }} </h2>
-    -->
 
 
 

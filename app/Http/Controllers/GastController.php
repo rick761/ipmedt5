@@ -18,15 +18,10 @@ class GastController extends Controller
     public function index(){
 
 
-        $laatsteSignaal = OntvangenSignaal::orderBy('created_at', 'desc')
-            ->first();
-
-
-
-
+        $laatsteSignaal = OntvangenSignaal::orderBy('created_at', 'desc')->first();
 
         return view('welcome', [
-            'laatsteSignaal'=>$laatsteSignaal
+            'laatsteSignaal'=>$laatsteSignaal //het laatste signaal wordt weergegeven voor gasten.
         ]);
     }
 }

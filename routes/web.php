@@ -16,26 +16,26 @@ use App\Events\SignaalEvent;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/','GastController@index')->name('visitor');
+Route::get('/','GastController@index')->name('visitor'); //bezoekerspagina
 
-Route::get('/userhistory', 'UserHistoryController@index')->name('userHistory');
+Route::get('/userhistory', 'UserHistoryController@index')->name('userHistory'); // geschiedenis bekijken
 
-Auth::routes();
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Auth::routes();//auths routs
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');//loguit
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');//homepage als ingelogd
 
-Route::get('/vragenlijst', 'vragenlijstController@index')->name('vragenlijst');
+Route::get('/vragenlijst', 'vragenlijstController@index')->name('vragenlijst'); // vragenlijstPAGE
 
-Route::post('/voerVragenlijstIn', 'vragenlijstController@voerVragenlijstIn')->name('voerVragenlijstIn');
+Route::post('/voerVragenlijstIn', 'vragenlijstController@voerVragenlijstIn')->name('voerVragenlijstIn'); //vragenlijstinvoerenFORM
 
-Route::get('/addSignaaltoDbEvent/{timestamp}/{uv}',function($apivalue,$uv){
+Route::get('/addSignaaltoDbEvent/{timestamp}/{uv}',function($apivalue,$uv){ // voert event uit als dit geopend gegaan wordt.
     event(new SignaalEvent($apivalue,$uv));
     return 'OK:noerror';
 })->name('addSignaaltoDbEvent');
 
 
-Route::post('/addUserHistory', 'UserHistoryController@add')->name('addUserHistory');
+Route::post('/addUserHistory', 'UserHistoryController@add')->name('addUserHistory'); //toevoegen
 
-Route::post('/veranderGrafiek', 'UserHistoryController@veranderGrafiek')->name('veranderGrafiek');
+Route::post('/veranderGrafiek', 'UserHistoryController@veranderGrafiek')->name('veranderGrafiek'); //geschiedenis andere dag bekijken
 

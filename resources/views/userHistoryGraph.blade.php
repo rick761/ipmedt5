@@ -9,7 +9,7 @@
                 Selecteer datum
             </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <!-------dropdown om een datum te kiezen om geschiedenis van te tonen--------->
                 @for ($i = 0; $i < count($datumsInDatabase); $i++)
                     @foreach($datumsInDatabase[$i] as $datum)
                         <form method="post" action="{{route('veranderGrafiek')}}">
@@ -28,7 +28,7 @@
                 @endfor
             </div>
         </div>
-        </div>
+        </div> <!----------bericht die dag weergeeft van de geschiedenisTabel------>
             <p class="message">Geschiedenis
 
                 @if(Carbon\Carbon::parse($huidige_datum)->isToday())
@@ -42,7 +42,7 @@
 
 
             </p>
-
+        <!---------Tabel wordt weergegeven------->
             <div class="chart_container">
                 <div id="poll_div"></div>
                 </div>

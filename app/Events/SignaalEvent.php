@@ -39,6 +39,7 @@ class SignaalEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        //event waar naar geluisterd wordt voor live updates
         return new Channel('channelSignaalEvent');
     }
 }

@@ -158,25 +158,42 @@
 
             <h2 class="font-weight-light mb-0">De zonnen sterkte is: <span class="signaal_uv">{{$laatsteSignaal->uv}}</span> / 8 om  <span class="signaal_created_at">"{{$laatsteSignaal->created_at}}"</span></h2>
 
-            @if($laatsteSignaal->uv <= 0.4)
-                <div class="adviezen">
-                    <h2>U kunt onbeperkt onbeschermd zonnen</h2>
-                </div>
-            @else
-                <p>{{$advies->tekst}}</p>
+
+            <br>
+
+
+
+
+
+
+
+
+			@if(!empty($advies))
+				<p>{{$advies->tekst}}</p>
+			@endif
                 <table class="table table-striped table-bordered">
 
                     <!--Table head-->
-                    <thead>
+			@if(!empty($advies))
+                <thead>
                     <tr>
                         <th>Zonnebrand advies</th>
                         <th>Advies Tijd</th>
                     </tr>
-                    </thead>
+                </thead>
+			@endif
+
                     <!--Table head-->
 
                     <!--Table body-->
-                    <tbody>
+                <tbody>
+                @if($laatsteSignaal->uv <= 0.4)
+                        <tr>
+                            <td colspan="2">
+                                U kunt onbeperkt onbeschermd zonnen
+                            </td>
+                        </tr>
+                @else
                     <tr>
 
                         <td>Factor 10</td>
@@ -197,9 +214,22 @@
                         <td>Factor 50</td>
                         <td>{{$factoradvies50}}</td>
                     </tr>
-                    </tbody>
-            @endif
-                    
+                @endif
+
+                @if(isset($eerste_userhistory_vandaag))
+                    <tr>
+                        <td colspan="2">
+                            De eerste meting van vandaag is:  {{ $eerste_userhistory_vandaag }}. <br>
+                            Met een gemiddelde UV-straling van {{$gemiddelde_uv_straling}}.
+                        </td>
+                    </tr>
+                @endif
+
+                </tbody>
+            </table>
+
+
+
 
 
 

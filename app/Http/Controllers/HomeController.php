@@ -51,7 +51,9 @@ class HomeController extends Controller
         foreach($eerste_userhistory_vandaag as $item){
             $gemiddelde_uv_straling += $item->uv;
         }
-        $gemiddelde_uv_straling= $gemiddelde_uv_straling/$eerste_userhistory_vandaag->count();
+		if($eerste_userhistory_vandaag->count() > 0 ){
+			$gemiddelde_uv_straling= $gemiddelde_uv_straling/$eerste_userhistory_vandaag->count();
+		}
         //$gemiddelde_uv_straling = $gemiddelde_uv_straling/$eerste_userhistory_vandaag->count();
         //dump($gemiddelde_uv_straling.$eerste_userhistory_vandaag->count());
         $eerste_userhistory_vandaag=$eerste_userhistory_vandaag->first();

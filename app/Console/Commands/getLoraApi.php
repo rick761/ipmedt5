@@ -61,9 +61,9 @@ class getLoraApi extends Command
                 $signaal->save();
                 //het opslaan van het nieuwe signaal
                 $client = new \GuzzleHttp\Client();
-               $res = $client->request('GET', 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
+               $res = $client->request('GET', 'http://localhost/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
                 $res->getBody();
-                echo 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling;
+                echo 'http://localhost/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling;
                 // het versturen naar de controller
             } else {
                 //bestaat al

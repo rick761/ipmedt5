@@ -44,6 +44,8 @@ class getLoraApi extends Command
             //bovenstaande plaatst de timestamp van things network in een timestamp van laravel
             $final_date_time = Carbon::now();
             $final_date_time->setDate($jaar, $maand, $dag)->setTime($uur, $minuut, $seconde)->toDateTimeString();
+            $final_date_time->addHours(2);
+
             //maken van correcte timestamp van things naar laravel
 
             //print_r($final_date_time);
@@ -53,14 +55,15 @@ class getLoraApi extends Command
             if($zoekSignaal->count() == 0){ // als hij niet bestaat
                 //bestaat niet
                 $signaal = new OntvangenSignaal();
+
                 $signaal->created_at = $final_date_time;
                 $signaal->uv = $laatste_call->uv_straling;
                 $signaal->save();
                 //het opslaan van het nieuwe signaal
                 $client = new \GuzzleHttp\Client();
-               $res = $client->request('GET', 'http://localhost/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
+               $res = $client->request('GET', 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling);
                 $res->getBody();
-                echo 'http://localhost/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling;
+                echo 'http://localhost:8000/addSignaaltoDbEvent/'.$signaal->created_at.'/'.$laatste_call->uv_straling;
                 // het versturen naar de controller
             } else {
                 //bestaat al

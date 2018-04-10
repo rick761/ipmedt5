@@ -46,7 +46,7 @@
             <div class="chart_container">
                 <div id="poll_div"></div>
                 </div>
-                @columnchart('Geschiedenis', 'poll_div')
+                @areachart('Geschiedenis', 'poll_div')
 
 
 

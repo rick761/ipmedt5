@@ -52,14 +52,15 @@ class UserHistoryController extends Controller
             $geschiedenis->addRow([$i->OntvangenSignaal->created_at->format('H:i:s'), $i->OntvangenSignaal->uv]);
         }
 
-        $data['votes'] = \Lava::ColumnChart('Geschiedenis', $geschiedenis,[
+        $data['votes'] = \Lava::AreaChart('Geschiedenis', $geschiedenis,[
             'title' => 'Zonnen sterkte in UV',
             'colors' => ['#6c757d'],
             'backgroundColor'=>'none',
             'width'=>500,
             'legend' => [
             'position' => 'in',
-            'fontColor' => 'white'
+            'fontColor' => 'white',
+			
             ]
 
         ]);

@@ -172,7 +172,7 @@
         <tr>
             <td colspan="2">
                 <div class="alert alert-info" style="margin-bottom:0;">
-                    Voor een persoonlijk advies, <strong>registreer</strong> of <strong>login</strong>!
+                    Voor een persoonlijk advies, <strong><a href="{{route('register')}}">registreer</a></strong> of <strong><a href="{{route('login')}}">login</a></strong>!
                 </div>
             </td>
         </tr>

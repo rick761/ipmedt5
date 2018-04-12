@@ -13,7 +13,7 @@
                 <input type="text" type="text" class="{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus placeholder="Naam"/>
                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Email adres" />
                 <input type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Wachtwoord"/>
-                <input type="password" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="password_confirmation" value="{{ old('email') }}" required placeholder="Verifireer wachtwoord"/>
+                <input type="password" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="password_confirmation" value="{{ old('email') }}" required placeholder="Verifieer wachtwoord"/>
                 <button type="submit">Registreer</button>
                 @if ($errors->has('name'))
 

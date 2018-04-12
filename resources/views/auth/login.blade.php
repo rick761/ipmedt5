@@ -7,8 +7,8 @@
 
             <form method="POST" action="{{ route('login') }}" class=" login-form ">
                 @csrf
-                <input type="text" placeholder="email"  type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus />
-                <input type="password" placeholder="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required/>
+                <input type="text" placeholder="Email adres"  type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus />
+                <input type="password" placeholder="Wachtwoord" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required/>
                 <button type="submit">login</button>
             </form>
             @if ($errors->has('email'))

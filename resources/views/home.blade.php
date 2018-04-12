@@ -157,7 +157,7 @@
             </ul>
 
 
-            <h2 class="font-weight-light mb-0">De zonneterkte is: <span class="signaal_uv">{{$laatsteSignaal->uv}}</span> / 8 om  <span class="signaal_created_at">"{{$laatsteSignaal->created_at}}"</span></h2>
+            <h2 class="font-weight-light mb-0">De zonnesterkte is: <span class="signaal_uv">{{$laatsteSignaal->uv}}</span> / 8 om  <span class="signaal_created_at">"{{$laatsteSignaal->created_at}}"</span></h2>
 
 
             <br>

@@ -159,14 +159,23 @@
 
 
 
-    <h2 class="font-weight-light mb-0">De zonnen sterkte is: <span class="signaal_uv">{{$laatsteSignaal->uv}}</span> / 8 om  <span class="signaal_created_at">"{{$laatsteSignaal->created_at}}"</span></h2>
+    <h2 class="font-weight-light mb-0">De zonnesterkte is: <span class="signaal_uv">{{$laatsteSignaal->uv}}</span> / 8 om  <span class="signaal_created_at">"{{$laatsteSignaal->created_at}}"</span></h2>
 	<br>
 	<table class="table table-striped table-bordered">
 		<tr>
 			<td colspan="2">
-				Zorg ervoor dat de box in de zon staat, met de blauwe kant naar boven!
+                <div class="alert alert-warning" style="margin-bottom:0;">
+                    Zorg ervoor dat de box in de <strong>zon</strong>  staat, met de <strong>blauwe</strong>  kant naar boven!
+                </div>
 			</td>
 		</tr>
+        <tr>
+            <td colspan="2">
+                <div class="alert alert-info" style="margin-bottom:0;">
+                    Voor een persoonlijk advies, <strong>registreer</strong> of <strong>login</strong>!
+                </div>
+            </td>
+        </tr>
 	</table>
 
 

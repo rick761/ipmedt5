@@ -46,7 +46,7 @@ class UserHistoryController extends Controller
         }
 
         $data['votes'] = \Lava::AreaChart('Geschiedenis', $geschiedenis,[ // instellingen van de chart
-            'title' => 'Zonnen sterkte in UV',
+            'title' => 'Zonnesterkte in UV',
             'colors' => ['#6c757d'],
             'backgroundColor'=>'none',
 
